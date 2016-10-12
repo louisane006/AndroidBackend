@@ -1,7 +1,7 @@
 package ComputerMaster.repository;
 
 import ComputerMaster.App;
-import ComputerMaster.domain.Employee;
+import ComputerMaster.domain.Designer;
 import ComputerMaster.domain.Shop;
 import ComputerMaster.conf.factory.ShopFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.List;
 public class ShopCrudTest extends AbstractTestNGSpringContextTests {
 
     private Long id;
-    List<Employee> e;
+    List<Designer> e;
     @Autowired
     ShopRepo repo;
 

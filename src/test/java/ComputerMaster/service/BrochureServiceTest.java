@@ -1,11 +1,11 @@
 package ComputerMaster.service;
 
 import ComputerMaster.App;
-import ComputerMaster.Service.ItemsService;
-import ComputerMaster.domain.Items;
+import ComputerMaster.Service.BrochureService;
+import ComputerMaster.domain.Brochure;
 import ComputerMaster.domain.Section;
-import ComputerMaster.conf.factory.ItemFactory;
-import ComputerMaster.repository.ItemRepo;
+import ComputerMaster.conf.factory.BrochureFactory;
+import ComputerMaster.repository.BrochureRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -20,13 +20,13 @@ import java.util.HashMap;
  */
 @SpringApplicationConfiguration(classes= App.class)
 @WebAppConfiguration
-public class ItemServiceTest extends AbstractTestNGSpringContextTests {
+public class BrochureServiceTest extends AbstractTestNGSpringContextTests {
     private Long id;
     Section section;
     @Autowired
-    ItemRepo repo;
+    BrochureRepo repo;
     @Autowired
-    ItemsService service;
+    BrochureService service;
 
     @Test
     public void testCreate() throws Exception {
@@ -35,16 +35,16 @@ public class ItemServiceTest extends AbstractTestNGSpringContextTests {
         values.put("name", "Hp");
         values.put("code", "BC500");
         section.put("section", new Section("PCS"));
-        Items item = ItemFactory.createItem(values, section);
+        Brochure item = BrochureFactory.createBrochure(values, section);
         repo.save(item);
         id = item.getId();
         Assert.assertNotNull(item.getId());
     }
     @Test(dependsOnMethods = "testCreate")
     public void testDelete() throws Exception {
-        Items item = repo.findOne(id);
+        Brochure item = repo.findOne(id);
         repo.delete(item);
-        Items i = repo.findOne(id);
+        Brochure i = repo.findOne(id);
         Assert.assertNull(i);
     }
 }

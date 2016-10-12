@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Malu.Mukendi on 2016-08-15.
  */
 public class ShopFactoryTest extends TestCase {
-    List<Employee> e;
+    List<Designer> e;
     public ShopFactoryTest() {
     }
     @Test

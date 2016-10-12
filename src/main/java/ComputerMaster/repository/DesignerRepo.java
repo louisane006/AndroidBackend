@@ -1,6 +1,6 @@
 package ComputerMaster.repository;
 
-import ComputerMaster.domain.Employee;
+import ComputerMaster.domain.Designer;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Created by Malu.Mukendi on 2016-08-14.
  */
 @Repository
-public interface EmployeeRepo extends CrudRepository<Employee,Long> {
+public interface DesignerRepo extends CrudRepository<Designer,Long> {
 }

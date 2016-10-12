@@ -1,43 +1,31 @@
-package ComputerMaster.domain;
+package ComputerMaster.model;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
+import org.springframework.hateoas.ResourceSupport;
 
 /**
- * Created by Malu.Mukendi on 2016-08-14.
+ * Created by Malu.Mukendi on 2016-08-18.
  */
-@Entity
-public class Employee implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class DesignerResource extends ResourceSupport {
+    private Long resId;
     private String name;
     private String surname;
     private String address;
-    public Employee(){}
 
-    public Employee(Builder b){
-        name = b.name;
-        surname = b.surname;
-        address = b.address;
-        id = b.id;
-        //shop = b.shop;
+    public DesignerResource(Builder b){
+        this.resId = b.resId;
+        this.name = b.name;
+        this.surname = b.surname;
+        this.address = b.address;
     }
     public static class Builder{
-         Long id;
+         Long resId;
          String name;
          String surname;
          String address;
-         //List<Shop> shop;
         public Builder() {
         }
         public Builder name(String name){
             this.name = name;
-            return this;
-        }
-        public Builder identification(Long id){
-            this.id = id;
             return this;
         }
         public Builder surname(String surname){
@@ -48,24 +36,24 @@ public class Employee implements Serializable {
             this.address = address;
             return this;
         }
-        /*public Builder shop(List<Shop> shop) {
-            this.shop = shop;
+        public Builder identification(Long resId){
+            this.resId = resId;
             return this;
-        }*/
-        public Builder copy(Employee value) {
-            this.id = value.id;
+
+        }
+        public Builder copy(DesignerResource value) {
+            this.resId = value.resId;
             this.name = value.name;
             this.surname = value.surname;
             this.address = value.address;
-            //this.shop = value.shop;
             return  this;
         }
-        public Employee build(){
-            return new Employee(this);
+        public DesignerResource build(){
+            return new DesignerResource(this);
         }
     }
     public Long getIdentification() {
-        return id;
+        return resId;
     }
     public String getName() {
         return name;
@@ -76,7 +64,4 @@ public class Employee implements Serializable {
     public String getAddress() {
         return address;
     }
-    //public List<Shop> getShop() {
-        //return shop;
-   // }
 }

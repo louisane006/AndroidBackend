@@ -1,5 +1,5 @@
 package ComputerMaster.model;
-import ComputerMaster.domain.Employee;
+import ComputerMaster.domain.Designer;
 import org.springframework.hateoas.ResourceSupport;
 
 import java.util.List;
@@ -38,7 +38,7 @@ public class ShopResource extends ResourceSupport {
         private Long resid;
         private String name;
         private String address;
-        private List<Employee> employee;
+        private List<Designer> designer;
 
         public Builder(String name) {
             this.name = name;

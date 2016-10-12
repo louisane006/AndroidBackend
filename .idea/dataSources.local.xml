@@ -2,12 +2,14 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="MySQL - information_schema@localhost" uuid="bad02250-8468-47bb-8b06-926246806815">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
       <introspection-scope>information_schema:</introspection-scope>
       <resolve-scope>information_schema:</resolve-scope>
     </data-source>
     <data-source name="MySQL - test@localhost" uuid="5fb10c18-892d-4289-bb71-53505683ddef">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
       <secret-storage>master_key</secret-storage>
       <resolve-scope>information_schema:|test:*</resolve-scope>
     </data-source>

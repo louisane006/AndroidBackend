@@ -1,10 +1,10 @@
 package ComputerMaster.service;
 
 import ComputerMaster.App;
-import ComputerMaster.Service.EmployeeService;
-import ComputerMaster.domain.Employee;
-import ComputerMaster.conf.factory.EmployeeFactory;
-import ComputerMaster.repository.EmployeeRepo;
+import ComputerMaster.Service.DesignerService;
+import ComputerMaster.conf.factory.DesignerFactory;
+import ComputerMaster.domain.Designer;
+import ComputerMaster.repository.DesignerRepo;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -22,9 +22,9 @@ import java.util.Map;
 public class EmployeeServiceTest extends AbstractTestNGSpringContextTests {
     private Long id;
     @Autowired
-    EmployeeRepo repo;
+    DesignerRepo repo;
     @Autowired
-    EmployeeService service;
+    DesignerService service;
 
     @Test
     public void testCreate() throws Exception {
@@ -32,16 +32,16 @@ public class EmployeeServiceTest extends AbstractTestNGSpringContextTests {
         values.put("name", "Caren");
         values.put("surname", "Madden");
         values.put("address", "Wynberg , Cape Town");
-        Employee emp = EmployeeFactory.createEmployee(values);
+        Designer emp = DesignerFactory.createEmployee(values);
         repo.save(emp);
         id = emp.getIdentification();
         Assert.assertNotNull(emp);
     }
-    /*@Test(dependsOnMethods = "testCreate")
+    @Test(dependsOnMethods = "testCreate")
     public void testDelete() throws Exception {
-        Employee emp = repo.findOne(id);
+        Designer emp = repo.findOne(id);
         repo.delete(emp);
-        Employee e = repo.findOne(id);
+        Designer e = repo.findOne(id);
         Assert.assertNull(e);
-    }*/
+    }
 }

@@ -1,9 +1,9 @@
 package ComputerMaster.repository;
 
 import ComputerMaster.App;
-import ComputerMaster.domain.Items;
+import ComputerMaster.domain.Brochure;
 import ComputerMaster.domain.Section;
-import ComputerMaster.conf.factory.ItemFactory;
+import ComputerMaster.conf.factory.BrochureFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -17,44 +17,44 @@ import java.util.HashMap;
  */
 @SpringApplicationConfiguration(classes= App.class)
 @WebAppConfiguration
-public class ItemCrudTest extends AbstractTestNGSpringContextTests {
+public class BrochureCrudTest extends AbstractTestNGSpringContextTests {
     private Long id;
     Section section = new Section();
     @Autowired
-    ItemRepo repo;
+    BrochureRepo repo;
 
     @Test
     public void testCreate() throws Exception {
         HashMap<String, String> values = new HashMap<>();
         HashMap<String, Section> section = new HashMap<>();
         values.put("name", "Lenovo");
-        values.put("code", "BT500");
+        values.put("code", "BT5000");
         section.put("section", new Section("PCS"));
-        Items item = ItemFactory.createItem(values, section);
+        Brochure item = BrochureFactory.createBrochure(values, section);
         repo.save(item);
         id = item.getId();
         Assert.assertNotNull(item.getId());
     }
     @Test(dependsOnMethods = "testCreate")
     public void testRead()throws Exception {
-        Items item = repo.findOne(id);
+        Brochure item = repo.findOne(id);
         Assert.assertEquals("Lenovo", item.getName());
     }
     @Test(dependsOnMethods = "testRead")
     public void testUpdate() throws Exception {
-        Items item = repo.findOne(id);
-        Items i  = new Items.Builder()
+        Brochure item = repo.findOne(id);
+        Brochure i  = new Brochure.Builder()
                 .copy(item)
                 .name("HP")
                 .build();
         repo.save(i);
         Assert.assertEquals("HP",i.getName());
     }
-    /*@Test(dependsOnMethods = "testUpdate")
+    @Test(dependsOnMethods = "testUpdate")
     public void testDelete() throws Exception {
-        Items item = repo.findOne(id);
+        Brochure item = repo.findOne(id);
         repo.delete(item);
-        Items i = repo.findOne(id);
+        Brochure i = repo.findOne(id);
         Assert.assertNull(i);
-    }*/
+    }
 }

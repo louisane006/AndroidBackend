@@ -1,6 +1,6 @@
 package ComputerMaster.domain;
 
-import ComputerMaster.conf.factory.ItemFactory;
+import ComputerMaster.conf.factory.BrochureFactory;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,9 +11,9 @@ import java.util.Map;
 /**
  * Created by Malu.Mukendi on 2016-08-15.
  */
-public class ItemFactoryTest extends TestCase {
+public class BrochureFactoryTest extends TestCase {
 
-    public ItemFactoryTest() {
+    public BrochureFactoryTest() {
     }
     @Test
     public void testCreate() {
@@ -24,7 +24,7 @@ public class ItemFactoryTest extends TestCase {
         values.put("name", "Laptop");
         values.put("code", "LP500");
         section.put("section", section.get(sec.getName()));
-        Items i = ItemFactory.createItem(values, section);
+        Brochure i = BrochureFactory.createBrochure(values, section);
         Assert.assertEquals("Laptop", i.getName());
         Assert.assertEquals("LP500", i.getCode());
         Assert.assertEquals(section.get(sec.getName()), i.getSection());
@@ -37,8 +37,8 @@ public class ItemFactoryTest extends TestCase {
         sec.setSectionName("PCS");
         values.put("name", "Laptop");
         values.put("code", "LP500");
-        Items item = ItemFactory.createItem(values, section);
-        Items newItem = (new Items.Builder().copy(item).code("LP700").build());
+        Brochure item = BrochureFactory.createBrochure(values, section);
+        Brochure newItem = (new Brochure.Builder().copy(item).code("LP700").build());
         Assert.assertEquals("Laptop", newItem.getName());
         Assert.assertEquals("LP700", newItem.getCode());
         Assert.assertEquals(section.get(sec.getName()), newItem.getSection());
