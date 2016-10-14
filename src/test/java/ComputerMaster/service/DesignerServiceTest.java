@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @SpringApplicationConfiguration(classes= App.class)
 @WebAppConfiguration
-public class EmployeeServiceTest extends AbstractTestNGSpringContextTests {
+public class DesignerServiceTest extends AbstractTestNGSpringContextTests {
     private Long id;
     @Autowired
     DesignerRepo repo;
