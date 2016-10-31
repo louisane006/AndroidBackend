@@ -8,16 +8,16 @@ import java.util.List;
 /**
  * Created by Malu.Mukendi on 2016-08-15.
  */
-public class BrochureResource extends ResourceSupport {
+public class BrandResource extends ResourceSupport {
 
     private Long resId;
     private String name;
     private String code;
     private List<Section> section;
 
-    private BrochureResource() {
+    private BrandResource() {
     }
-    public BrochureResource(Builder builder) {
+    public BrandResource(Builder builder) {
         resId = builder.resId;
         name = builder.name;
         code = builder.code;
@@ -58,15 +58,15 @@ public class BrochureResource extends ResourceSupport {
             this.name = value;
             return this;
         }
-        public Builder copy(BrochureResource i) {
+        public Builder copy(BrandResource i) {
             this.name = i.name;
             this.code = i.code;
             this.resId = i.resId;
             this.section= i.section;
             return this;
         }
-        public BrochureResource build() {
-            return new BrochureResource(this);
+        public BrandResource build() {
+            return new BrandResource(this);
         }
     }
 }

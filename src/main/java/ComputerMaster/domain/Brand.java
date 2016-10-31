@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Malu.Mukendi on 2016-08-15.
  */
 @Entity
-public class Brochure implements Serializable{
+public class Brand implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -18,10 +18,10 @@ public class Brochure implements Serializable{
     @Embedded
     Section section;
 
-    public Brochure() {
+    public Brand() {
     }
 
-    public Brochure(Builder builder) {
+    public Brand(Builder builder) {
         id = builder.id;
         name = builder.name;
         code = builder.code;
@@ -69,22 +69,22 @@ public class Brochure implements Serializable{
             this.code = code;
             return this;
         }
-        public Builder copy(Brochure i){
+        public Builder copy(Brand i){
             this.name = i.name;
             this.code = i.code;
             this.id = i.id;
             this.section = i.section;
             return this;
         }
-        public Brochure build(){
-            return new Brochure(this);
+        public Brand build(){
+            return new Brand(this);
         }
     }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Brochure)) return false;
-        Brochure items = (Brochure) o;
+        if (!(o instanceof Brand)) return false;
+        Brand items = (Brand) o;
 
         return !(id != null ? !id.equals(items.id) : items.id != null);
     }

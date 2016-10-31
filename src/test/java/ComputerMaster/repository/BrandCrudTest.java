@@ -1,9 +1,9 @@
 package ComputerMaster.repository;
 
 import ComputerMaster.App;
-import ComputerMaster.domain.Brochure;
+import ComputerMaster.conf.factory.BrandFactory;
+import ComputerMaster.domain.Brand;
 import ComputerMaster.domain.Section;
-import ComputerMaster.conf.factory.BrochureFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -17,11 +17,11 @@ import java.util.HashMap;
  */
 @SpringApplicationConfiguration(classes= App.class)
 @WebAppConfiguration
-public class BrochureCrudTest extends AbstractTestNGSpringContextTests {
+public class BrandCrudTest extends AbstractTestNGSpringContextTests {
     private Long id;
     Section section = new Section();
     @Autowired
-    BrochureRepo repo;
+    BrandRepo repo;
 
     @Test
     public void testCreate() throws Exception {
@@ -30,20 +30,20 @@ public class BrochureCrudTest extends AbstractTestNGSpringContextTests {
         values.put("name", "Lenovo");
         values.put("code", "BT5000");
         section.put("section", new Section("PCS"));
-        Brochure item = BrochureFactory.createBrochure(values, section);
+        Brand item = BrandFactory.createBrochure(values, section);
         repo.save(item);
         id = item.getId();
         Assert.assertNotNull(item.getId());
     }
     @Test(dependsOnMethods = "testCreate")
     public void testRead()throws Exception {
-        Brochure item = repo.findOne(id);
+        Brand item = repo.findOne(id);
         Assert.assertEquals("Lenovo", item.getName());
     }
     @Test(dependsOnMethods = "testRead")
     public void testUpdate() throws Exception {
-        Brochure item = repo.findOne(id);
-        Brochure i  = new Brochure.Builder()
+        Brand item = repo.findOne(id);
+        Brand i  = new Brand.Builder()
                 .copy(item)
                 .name("HP")
                 .build();
@@ -52,9 +52,9 @@ public class BrochureCrudTest extends AbstractTestNGSpringContextTests {
     }
     @Test(dependsOnMethods = "testUpdate")
     public void testDelete() throws Exception {
-        Brochure item = repo.findOne(id);
+        Brand item = repo.findOne(id);
         repo.delete(item);
-        Brochure i = repo.findOne(id);
+        Brand i = repo.findOne(id);
         Assert.assertNull(i);
     }
 }
